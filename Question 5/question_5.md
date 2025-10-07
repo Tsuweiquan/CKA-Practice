@@ -4,13 +4,14 @@
 
 Task
 
-First, create a snapshot of the existing etcd instance running at https://127.0.0.1:2379,
+Create a new NetworkPolicy named allow-port-from-namespace in the existing
 
-saving the snapshot to /var/lib/backup/etcd-snapshot.db.
+namespace fubar.
 
-![alt text](image-1.png)
+Ensure that the new NetworkPolicy allows Pods in namespace internal to connect to port 9000 of Pods in namespace fubar.
 
-![alt text](image-2.png)
+Further ensure that the new NetworkPolicy:
 
-Next, restore an existing, previous snapshot located at /var/lib/backup/etcd-snapshot-previous.db.
+✑ does not allow access to Pods, which don't listen on port 9000
 
+✑ does not allow access from Pods, which are not in namespace internal
