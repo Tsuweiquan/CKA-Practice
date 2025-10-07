@@ -1,0 +1,16 @@
+
+# Run in bash
+
+# Check the create verb can be assigned to what
+kubectl api-resources --verbs=create
+# Create the cluster role
+kubectl create clusterrole deployment-clusterrole --verb=create --resource=deployments,statefulsets,daemonsets
+
+# Create SA
+kubectl get ns app-team1
+kubectl create ns app-team1
+kubectl create sa cicd-token -n app-team1
+
+# Create rolebinding and not clusterrolebinding due to limited to the namespace
+kubectl create rolebinding deployment-clusterrole --clusterrole=deployment-clusterrole --serviceaccount app-team1:cicd-token
+kubectl get rolebinding deployment-clusterrole -o yaml
