@@ -1,0 +1,30 @@
+# Run in bash
+
+## search for etcd
+https://kubernetes.io/docs/tasks/administer-cluster/configure-upgrade-etcd/
+
+## search for snapshot
+- set the endpoint first
+
+export ENDPOINT=https://127.0.0.1:2379
+
+etcdctl --endpoint=$ENDPOINT member list
+
+# Create a snapshot
+# Remember to add in the TLS certs
+ETCDCTL_API=3 etcdctl --endpoints $ENDPOINT \
+--cacert=/opt/KUIN00601/ca.cert --cert=/opt/KUIN00601/etcd-client.crt \ 
+--key=/opt/KUIN00601/etcd-client.key \
+snapshot save /var/lib/backup/etcd-snapshot.db
+
+## Verify the snapshot
+etcdutl --write-out=table snapshot status /var/lib/backup/etcd-snapshot.db
+
+# Stop all etcd service first
+systemctl stop etcd
+
+# Restore existing previous snapshot
+etcdutl snapshot restore /var/lib/backup/etcd-snapshot-previous.db
+
+# Start etcd service 
+systemctl start etcd
