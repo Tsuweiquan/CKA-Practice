@@ -1,0 +1,9 @@
+# Run in bash
+
+minikube node add ek8s-node-0
+kubectl get nodes
+
+kubectl cordon ek8s-node-0
+kubectl drain ek8s-node-0 --ignore-daemonsets --delete-emptydir-data --force
+
+kubectl get pods --field-selector=spec.nodeName=minikube-m02 --all-namespaces
