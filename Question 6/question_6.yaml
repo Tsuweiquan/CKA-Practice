@@ -26,6 +26,7 @@ spec:
           name: http
 
 # create a new service
+# Better avoid this.
 kubectl create service nodeport front-end-svc --tcp=80
 
 apiVersion: v1
@@ -59,3 +60,6 @@ spec:
   type: NodePort
 status:
   loadBalancer: {}
+
+# Try use this
+kubectl expose deployment front-end-svc --type="NodePort" --port 80

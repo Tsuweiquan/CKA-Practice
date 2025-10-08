@@ -1,7 +1,3 @@
-# Run in bash
-
-vim pod.yaml
-
 apiVersion: v1
 kind: Pod
 metadata:
@@ -12,5 +8,6 @@ spec:
     image: nginx:1.14.2
     ports:
     - containerPort: 80
-  nodeName: minikube-m02
+  nodeSelector:
+    disk: ssd
   
