@@ -1,0 +1,21 @@
+Run in bash
+
+kubectl get nodes -o json | jq '.' | grep "\"type\": \"Ready\"" | wc -l > /opt/KUSC00402/kusc00402.txt
+
+# Better way
+kubectl get nodes -o jsonpath='{range .items[*]}{@.metadata.name}:{range @.status.conditions[*]}{@.type}={@.status};{end}{"\n"}{end}' | grep "Ready=True" | wc -l > /opt/KUSC00402/kusc00402.txt
+
+
+kubectl get nodes -o json |
+jq '[.items[] |
+ select(
+  (.status.conditions[] | select(.type=="Ready").status == "True") 
+  and 
+  ([.spec.taints[]? | select(.effect=="NoSchedule")] | length == 0)
+)] | length'
+
+# Worst case
+kubectl get nodes
+manually count the number of healthy nodes without taints
+
+echo "2" > /opt/KUSC00402/kusc00402.txt
