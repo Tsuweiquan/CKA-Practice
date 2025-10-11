@@ -1,0 +1,2 @@
+
+# kubectl logs foo | grep "file-not-found" > /opt/KUTR00101/foo

@@ -1,0 +1,6 @@
+# RUn in bash
+
+
+kubectl top pods -l name=overloaded-cpu --sort-by=cpu --all-namespaces
+
+echo "pod name" > /opt/KUTR00401/KUTR00401.txt
