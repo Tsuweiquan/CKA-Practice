@@ -5,7 +5,7 @@ kubectl describe node
 ## Look at taints
 
 There was an error message
-- Kubeley stopped posting node status
+- Kubelet stopped posting node status
 
 ssh wk8s-node-0
 

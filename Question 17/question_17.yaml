@@ -1,0 +1,1 @@
+# kubectl create ingress pong --rule="/hello=hello:5678" -n ing-internal 
