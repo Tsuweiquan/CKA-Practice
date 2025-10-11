@@ -1,0 +1,13 @@
+# kubectl get nodes
+kubectl describe node
+## look at events
+## Look at conditions
+## Look at taints
+
+There was an error message
+- Kubeley stopped posting node status
+
+ssh wk8s-node-0
+
+systemctl status kubelet
+systemctl start kubelet
