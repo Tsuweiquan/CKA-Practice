@@ -1,1 +1,16 @@
 # Question 19
+Task
+
+Create a new NetworkPolicy named allow-port-from-namespace in the existing namespace echo.
+
+Ensure that the new NetworkPolicy allows Pods in namespace internal to connect to port 9200/tcp of Pods in namespace echo.
+
+Further ensure that the new NetworkPolicy:
+
+• does not allow access to Pods, which don't listen on port 9200/tcp
+• does not allow access from Pods, which are not in namespace internal
+
+
+# Tips
+- refer to https://kubernetes.io/docs/concepts/services-networking/network-policies/
+- take note of podSelector: {}

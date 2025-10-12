@@ -1,1 +1,9 @@
 # Question 17
+
+Task
+Create a new nginx Ingress resource as follows:
+✑ Name: pong
+✑ Namespace: ing-internal
+✑ Exposing service hello on path /hello using service port 5678
+
+![alt text](image.png)
