@@ -20,5 +20,8 @@ tar -zxvf argo-cd-7.7.3.tgz
 // Edit the values files, disable crds.install -> false
 cd argo-cd/
 
-helm template . > /home/argo/argo-helm.yaml
+helm template . -n argocd > /home/argo/argo-helm.yaml
 
+// OR
+
+helm template argo argo/argo-cd --version 7.7.3 --set crds.install=false > /home/argo/argo-helm.yaml
