@@ -19,5 +19,7 @@ net.ipv6.conf.all.forwarding=1
 net.ipv4.ip_forward=1
 net.netfilter.ng_conntrack_max=131072
 
+sudo sysctl --system
+
 sudo systemctl restart cri-dockerd.service
 sudo systemctl status cri-dockerd.service
