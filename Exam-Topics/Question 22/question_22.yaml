@@ -1,0 +1,3 @@
+# Run in bash
+
+kubectl scale deployment guestbook --replicas=5

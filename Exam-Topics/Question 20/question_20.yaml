@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: kucc1
+spec:
+  containers:
+  - name: redis
+    image: redis
+    ports:
+    - containerPort: 80
+  - name: consul
+    image: consul:1.15.4
+    ports:
+    - containerPort: 80
