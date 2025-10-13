@@ -61,3 +61,8 @@ spec:
     - name: web-service
       port: 80
 ```
+
+#### Verify
+
+kubectl get gateway
+kubectl get httproute
