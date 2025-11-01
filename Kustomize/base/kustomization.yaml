@@ -1,0 +1,11 @@
+resources:
+- deployment.yaml
+
+namePrefix: "staging-"
+labels:
+  - pairs:
+      environment: production
+    includeSelectors: true
+images:
+- name: nginx
+  newTag: "1.21"
